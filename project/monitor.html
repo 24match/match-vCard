@@ -36,6 +36,36 @@
     <link rel="shortcut icon" href="../assets/images/favicons/favicon.png" type="image/png">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="../editormd/css/editormd.css"/>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../editormd/editormd.min.js"></script>
+
+    <script src="../editormd/lib/marked.min.js"></script>
+    <script src="../editormd/lib/prettify.min.js"></script>
+
+    <script src="../editormd/lib/raphael.min.js"></script>
+    <script src="../editormd/lib/underscore.min.js"></script>
+    <script src="../editormd/lib/sequence-diagram.min.js"></script>
+    <script src="../editormd/lib/flowchart.min.js"></script>
+    <script src="../editormd/lib/jquery.flowchart.min.js"></script>
+
+    <script src="../editormd/editormd.js"></script>
+
+    <script type="text/javascript">
+        // 加载editor-md.js
+        $.get("../md/monitor.md", function (markdown) {
+            var monitor_editor = editormd.markdownToHTML("monitor-editor", {
+                markdown: markdown,
+                htmlDecode: "style,script,iframe",  // you can filter tags decode
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+        });
+    </script>
+
     <link rel="stylesheet" type="text/css" href="../assets/styles/style.css"/>
     <link rel="stylesheet" type="text/css" href="../assets/demo/style-demo.css"/>
 
@@ -100,33 +130,10 @@
             <!-- Content -->
             <div class="col-12 col-md-12 col-lg-10">
                 <div class="box box-content">
-                    <!-- Post -->
-                    <div class="pb-3">
-                        <header class="header-post">
-                            <h1 class="title title--h1">智能监控平台</h1>
-                        </header>
-                        <div class="caption-post">
-                            <h3 class="title title--h3">项目介绍：</h3>
-                            <p>
-                                对公司的变压器产品进行各个数据的监测，通过modbus协议进行通讯，将数据在监控平台中展示，对变压器进行实时监控并通过数据大屏数据面板向客户进行展示。</p>
-                        </div>
-                        <div class="caption-post">
-                            <h3 class="title title--h3">项目难点分析及解决方案：</h3>
-                            <p>1.
-                                单表数据量很大，数据采集回来的数据是竖向扩展的，一个采集点就是一条数据，数据一分钟采集一次<br>
-                            </p>
-                        </div>
-                        <div class="caption-post">
-                            <h3 class="title title--h3">用了什么技术：</h3>
-                            <p>后端：Java8 + IDEA + SqlServer + Spring Boot + Mybatis-plus + Redis<br>
-                                前端：Vue + ElementUI
-                            </p>
-                        </div>
-                        <div class="caption-post">
-                            <h3 class="title title--h3">干了什么：</h3>
-                            <!--                            <p>与客户沟通，对需求进⾏拆解整理，与设计团队进⾏沟通制定流程，参与完整产品原型设计</p>-->
-                        </div>
 
+                    <div id="monitor-editor">
+                        <!-- md格式的介绍 -->
+                        <textarea style="display: none;"></textarea>
                     </div>
 
                 </div>
@@ -134,6 +141,7 @@
                 <!-- Footer -->
                 <footer class="footer">© 2024</footer>
             </div>
+
 
         </div>
     </div>
@@ -162,7 +170,6 @@
         <li class="slideNav__item"><a href="../background-2.html">Background triangles</a></li>
         <li class="slideNav__item"><a href="../works_v2.html">Works v2</a></li>
     </ul>
-    <a href="dark/about.html" class="btn btn--dark">Dark Template</a>
 </div>
 <div class="overlay-slideNav"></div>
 <!-- Demo Menu -->
