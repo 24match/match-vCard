@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>vCard - eftpay</title>
+    <title>vCard - 缤纷新会</title>
 
     <!-- Meta Data -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,6 +36,36 @@
     <link rel="shortcut icon" href="../assets/images/favicons/favicon.png" type="image/png">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="../editormd/css/editormd.css"/>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../editormd/editormd.min.js"></script>
+
+    <script src="../editormd/lib/marked.min.js"></script>
+    <script src="../editormd/lib/prettify.min.js"></script>
+
+    <script src="../editormd/lib/raphael.min.js"></script>
+    <script src="../editormd/lib/underscore.min.js"></script>
+    <script src="../editormd/lib/sequence-diagram.min.js"></script>
+    <script src="../editormd/lib/flowchart.min.js"></script>
+    <script src="../editormd/lib/jquery.flowchart.min.js"></script>
+
+    <script src="../editormd/editormd.js"></script>
+
+    <script type="text/javascript">
+        // 加载editor-md.js
+        $.get("../md/xinhui.md", function (markdown) {
+            var monitor_editor = editormd.markdownToHTML("xinhui-editor", {
+                markdown: markdown,
+                htmlDecode: "style,script,iframe",  // you can filter tags decode
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+        });
+    </script>
+
     <link rel="stylesheet" type="text/css" href="../assets/styles/style.css"/>
     <link rel="stylesheet" type="text/css" href="../assets/demo/style-demo.css"/>
 
@@ -100,34 +130,10 @@
             <!-- Content -->
             <div class="col-12 col-md-12 col-lg-10">
                 <div class="box box-content">
-                    <!-- Post -->
-                    <div class="pb-3">
-                        <header class="header-post">
-                            <h1 class="title title--h1">EftPay</h1>
-                        </header>
-                        <div class="caption-post">
-                            <h3 class="title title--h3">项目介绍：</h3>
-                            <p>支付系统是连接消费者、商家（或平台）和金融机构的桥梁，管理支付数据，调用第三方支付平台接口，
-                                记录支付信息（对应订单号，支付金额等），金额对账等功能，当需要增加支付方式时，业务平台不需做修改，而由支付组件统一进行。支付组件支持多个业务系统接口，最大化的重用了支付功能。支付系统结合系统强大的加密与安全技术，达到改善接入效率、
-                                实现高效、安全的支付、有效规避管理漏洞的目的。目前支付系统集成了支付宝，微信，银联支付，八达通等多种支付方式。</p>
-                        </div>
-                        <div class="caption-post">
-                            <h3 class="title title--h3">用了什么技术：</h3>
-                            <p>后端：Java8 + IDEA + PostgreSQL + Oracle + Spring Boot + Spring Batch + Mybatis-plus +
-                                Hibernate + Redis<br>
-                                前端：Vue + Element UI + html + css + bootstrap + layUI
-                            </p>
-                        </div>
-                        <div class="caption-post">
-                            <h3 class="title title--h3">干了什么：</h3>
-                            <p>
-                                1. 微信支付宝支付接入<br>
-                                2. CRM业务支撑，POS机对接<br>
-                                3. 批处理同步各个数据库数据并进行数据迁移（Oracle to PostgreSQL）<br>
-                                4. 澳门工行接入<br>
-                            </p>
-                        </div>
 
+                    <div id="xinhui-editor">
+                        <!-- md格式的介绍 -->
+                        <textarea style="display: none;"></textarea>
                     </div>
 
                 </div>
@@ -135,6 +141,7 @@
                 <!-- Footer -->
                 <footer class="footer">© 2024</footer>
             </div>
+
 
         </div>
     </div>
